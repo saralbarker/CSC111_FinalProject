@@ -1,0 +1,103 @@
+@font-face {
+    font-family: Heavitas;
+    src: url(Heavitas.ttf);
+}
+
+@font-face {
+    font-family: LANEPOSH;
+    src: url(LANEPOSH.ttf);
+}
+
+@font-face {
+    font-family: Quicksand_Light;
+    src: url(Quicksand_Light.otf);
+}
+
+#title {
+    font-family: Heavitas;
+    font-size: 50pt;
+    color: #2646ea;
+    -webkit-text-stroke: 1px black;
+    margin-left: 20px;
+}
+
+#header {
+    text-align: center;
+}
+
+#sub-title {
+    font-family: LANEPOSH;
+    font-size: 15pt;
+    padding-top: 65px;
+    margin-left: 50px;
+}
+
+.column_text {
+    font-family: Quicksand_Light;
+    font-size: 15pt;
+}
+
+.column1 {
+    float: left;
+    width: 50%;
+    cursor: url(rainDrop.png), auto;
+}
+
+.header:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column2 {
+    opacity: 0.5;
+    float: left;
+    width: 33.33%;
+    float: left;
+    width: 33.33%;
+}
+.categories: after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column_text {
+    text-align: center;
+}
+
+#container {
+    padding-left: 50px;
+    width: 430px;
+    margin-top: 300px;
+    height: 530px;
+    border: 5px solid black;
+    cursor: url(rainDrop.png), auto;
+}
+
+#interface {
+    width: 500px;
+    margin: 0 auto;
+    cursor: url("rainDrop.png"), auto;
+}
+
+#instruct {
+    font-family: Quicksand_Light;
+    font-size: 15pt;
+    text-align: center;
+}
+
+.categories {
+    background-color:
+}
+
+#clear_button {
+    font-size: 15pt;
+    font-family: Quicksand_Light;
+}
+
+#save_button {
+    font-size: 15pt;
+    font-family: Quicksand_Light;
+    margin-top: 5px;
+}

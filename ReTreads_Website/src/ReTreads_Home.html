@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://unpkg.com/konva@2.4.2/konva.min.js"></script>
+
+    <title>ReTreads</title>
+    <link rel="stylesheet" type="text/css" href="ReTreads_Home.css">
+</head>
+
+<body id = "background">
+
+<div class="header">
+    <div class="column1"> <h1 id = "title"> ReTreads </h1> </div>
+    <div class="column1">  <h1 id = "sub-title"> Customizable Rain Boots Made Entirely Out of Recycled Waste Tires </h1> </div>
+
+    <audio controls style="float:right">
+        <source src="boots.m4a" type="audio/mp4">
+        Your browser does not support the audio element.
+    </audio>
+
+</div>
+
+<div class="categories">
+    <div class="column2"> <p class = "column_text"> <b> Who We Are </b> <br> We are an inclusive company that seeks to cultivate a more sustainable future by deploying advanced design technology to create customizable rain boots made 100% from recycled waste tires. </p> </div>
+    <div class="column2"> <p class = "column_text"> <b> Our Manifesto </b> <br> The ReTreads Team is driven to take responsibility for our past actions as a global population, and lead our optimistic team of aware consumers and empowered creators. </p> <br> <br>
+        <center>
+            <button type="button" id = "clear_button" onClick="clearButton()"> Click Here to Start A New Design </button>
+            <button type="button" id="save_button"> Save My Design </button>
+        </center>
+        <p id = "instruct"> <b> Click within each panel of the boot to create your own personalized design. </b> </p> </div>
+    <div class="column2"> <p class = "column_text"> <b> What We Do </b> <br> ReTreads transforms the 260 million tires that are dumped every year into functional rain boots for women, men, and children, paving the road towards a more innovative, less wasteful world. </p> </div>
+</div>
+
+
+<div id="interface">
+    <div id="container">
+
+    </div>
+</div>
+</div>
+
+<script>
+
+// global variables (can be accessed in function outside window.onload)
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    var colorlist = ['white', 'red', 'orange', 'yellow', 'green', '#FF69B4', '#6495ED', '#191970', '#000000', '#E6E6FA', '#00FFFF', '#87CEFA', '#FFF0F5'];
+    var stage;
+    var layer;
+    var bottomBoot;
+    var baseShape;
+    var upperShape;
+    var lowerShape;
+
+    window.onload = function () {
+     stage = new Konva.Stage({
+        container: 'container',
+        width: width,
+        height: height
+    });
+
+    layer = new Konva.Layer();
+
+
+// tread shape
+            bottomBoot = new Konva.Line({
+              points: [327, 480, 150, 460, 100, 455, 48, 450, 43, 475, 50, 510, 120, 510, 125, 490, 250, 500, 320, 490],
+              fill: colorlist[0],
+              stroke: 'black',
+              strokeWidth: 5,
+              closed : true,
+              tension : 0.3,
+            });
+
+// tread color fill
+            bottomBoot.on('click',
+            function () {
+                // get index of current fill color
+                colorIndex = colorlist.indexOf(this.fill());
+
+
+                // change color
+                colorIndex++;
+                colorIndex = colorIndex % colorlist.length;
+
+                // sets the fill color with the new color
+                fill = colorlist[colorIndex];
+                this.fill(fill);
+                layer.draw();
+                }
+            );
+
+            layer.add(bottomBoot);
+
+
+// shoe base shape
+              baseShape = new Konva.Line({
+              points: [50, 35, 120, 25, 190, 40, 183, 330, 200, 380, 310, 420, 330, 440, 320, 485, 150, 460, 100, 455, 45, 450, 55, 300, 40, 100],
+              fill: colorlist[0],
+              stroke: 'black',
+              strokeWidth: 5,
+              closed : true,
+              tension : 0.3
+            });
+
+// shoe background color fill
+            baseShape.on('click',
+            function () {
+                // get index of current fill color
+                colorIndex = colorlist.indexOf(this.fill());
+
+                // change color
+                colorIndex++;
+                colorIndex = colorIndex % colorlist.length;
+
+                // sets the fill color with the new color
+                fill = colorlist[colorIndex];
+                this.fill(fill);
+                layer.draw();
+                }
+            );
+
+            layer.add(baseShape);
+
+
+// upper boot shape
+            upperShape = new Konva.Line({
+            points: [50, 34, 120, 25, 188, 34, 195, 100, 150, 105, 100, 105, 40, 100],
+            fill: colorlist[0],
+            stroke: 'black',
+            strokeWidth: 5,
+            closed : true,
+            tension : 0.2
+            });
+
+// upper boot color fill
+            upperShape.on('click',
+            function () {
+                // get index of current fill color
+                colorIndex = colorlist.indexOf(this.fill());
+
+                // change color
+                colorIndex++;
+                colorIndex = colorIndex % colorlist.length;
+
+                // sets the fill color with the new color
+                fill = colorlist[colorIndex];
+                this.fill(fill);
+                layer.draw();
+                }
+            );
+
+            layer.add(upperShape);
+
+
+// lower boot shape
+            lowerShape = new Konva.Line({
+            points: [58, 300, 178, 330, 187, 355, 205, 389, 48, 460, 40, 430, 54, 320],
+            fill: colorlist[0],
+            stroke: 'black',
+            strokeWidth: 5,
+            closed : true,
+            tension : 0.4
+            });
+
+// lower boot color fill
+            lowerShape.on('click',
+            function () {
+                // get index of current fill color
+                colorIndex = colorlist.indexOf(this.fill());
+
+
+                // change color
+                colorIndex++;
+                colorIndex = colorIndex % colorlist.length;
+
+                // sets the fill color with the new color
+                fill = colorlist[colorIndex];
+                this.fill(fill);
+                layer.draw();
+                }
+            );
+
+            layer.add(lowerShape);
+
+
+            stage.add(layer);
+        }
+
+
+// clear button method
+        function clearButton() {
+
+            bottomBoot.attrs.fill = colorlist[0];
+            layer.draw();
+            baseShape.attrs.fill = colorlist[0];
+            layer.draw();
+            upperShape.attrs.fill = colorlist[0];
+            layer.draw();
+            lowerShape.attrs.fill = colorlist[0];
+            layer.draw();
+
+
+        }
+
+
+
+//save button method
+
+        // function from https://stackoverflow.com/a/15832662/512042
+        function downloadURI(uri, name) {
+            var link = document.createElement("a");
+            link.download = name;
+            link.href = uri;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            delete link;
+        }
+
+        document.getElementById('save_button').addEventListener('click', function () {
+            var dataURL = stage.toDataURL();
+            downloadURI(dataURL, 'My_Design.png');
+        }, false);
+
+   </script>
+
+</body>
+
+</html>
